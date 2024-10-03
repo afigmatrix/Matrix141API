@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Matrix\\P141\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {}
+    "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {}
   },
   "projects": {
-    "D:\\Matrix\\P141\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {
+    "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Matrix\\P141\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+        "projectUniqueName": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
         "projectName": "Matrix1141EF",
-        "projectPath": "D:\\Matrix\\P141\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+        "projectPath": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
         "packagesPath": "C:\\Users\\mehdi\\.nuget\\packages\\",
-        "outputPath": "D:\\Matrix\\P141\\Matrix1141EF\\Matrix1141EF\\obj\\",
+        "outputPath": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mehdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
