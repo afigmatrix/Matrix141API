@@ -9,5 +9,6 @@ namespace Matrix1141EF.Data
         { }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
