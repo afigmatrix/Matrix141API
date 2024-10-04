@@ -1,4 +1,5 @@
-using Matrix1141EF.Data;
+﻿using Matrix1141EF.Data;
+using Matrix1141EF.Data.Entity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +28,6 @@ namespace Matrix1141EF
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var a = 4;
             services.AddControllers();
             services.AddDbContext<AppDbContext>(op =>
             {
