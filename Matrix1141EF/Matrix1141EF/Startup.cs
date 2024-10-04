@@ -27,7 +27,7 @@ namespace Matrix1141EF
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            var a = 4;
             services.AddControllers();
             services.AddDbContext<AppDbContext>(op =>
             {
