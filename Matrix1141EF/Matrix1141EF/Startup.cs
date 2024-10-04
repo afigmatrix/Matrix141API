@@ -29,7 +29,7 @@ namespace Matrix1141EF
         {
 
             services.AddControllers();
-            services.AddDbContext<AppDbContext>(op =>
+            services.AddDbContext<AppDBContext>(op =>
             {
                 op.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
