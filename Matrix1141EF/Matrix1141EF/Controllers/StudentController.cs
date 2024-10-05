@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Matrix1141EF.Controllers
@@ -28,7 +29,7 @@ namespace Matrix1141EF.Controllers
             studentEntity.Name = modelDto.Name;
             studentEntity.Age = modelDto.Age;
             studentEntity.BirthDate = modelDto.BirthDate;
-
+            studentEntity.FacultyId = modelDto.FacultyId;
             await _context.Students.AddAsync(studentEntity);
             await _context.SaveChangesAsync();
 
@@ -39,8 +40,10 @@ namespace Matrix1141EF.Controllers
         [HttpGet]
         public async Task<List<Student>> ReadAllStudent()
         {
-            var result = _context.Students.ToListAsync();
-            return await result;
+            var result =await _context.Students.Include(m=>m.Faculty).ToListAsync();
+            var student = await _context.Students.Where(m => m.Id == 5).FirstOrDefaultAsync();
+            var studentWithFaculty = await _context.Students.Include(m=>m.Faculty).Where(m => m.Id == 5).FirstOrDefaultAsync();
+            return  result;
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Matrix1141EF.Model.DTO
     {
         public string Name { get; set; }
         public int? Age { get; set; }
+        public int FacultyId { get; set; }
         public DateTime BirthDate { get; set; }
     }
 }
