@@ -6240,19 +6240,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mehdi\\.nuget\\packages\\": {}
+    "C:\\Users\\ikinci.el.noutbuklar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+      "projectUniqueName": "C:\\Users\\ikinci.el.noutbuklar\\Source\\Repos\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
       "projectName": "Matrix1141EF",
-      "projectPath": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
-      "packagesPath": "C:\\Users\\mehdi\\.nuget\\packages\\",
-      "outputPath": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\obj\\",
+      "projectPath": "C:\\Users\\ikinci.el.noutbuklar\\Source\\Repos\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+      "packagesPath": "C:\\Users\\ikinci.el.noutbuklar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ikinci.el.noutbuklar\\Source\\Repos\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mehdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ikinci.el.noutbuklar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6327,7 +6327,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }
