@@ -19,7 +19,7 @@ namespace Matrix1141EF.Controllers
         {
             _context = context;
         }
-        [HttpPost("{login}")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDTO userLoginDTO)
         {
             if (string.IsNullOrEmpty(userLoginDTO.Email) || string.IsNullOrEmpty(userLoginDTO.Password))
@@ -61,7 +61,7 @@ namespace Matrix1141EF.Controllers
 
             }
         }
-        [HttpPost("{LogOut}")]
+        [HttpPost("LogOut")]
         public async Task<IActionResult> Logout(LogoutDTO logoutDTO)
         {
             if (string.IsNullOrEmpty(logoutDTO.Email) || string.IsNullOrEmpty(logoutDTO.Password) || string.IsNullOrEmpty(logoutDTO.Token))
@@ -74,7 +74,7 @@ namespace Matrix1141EF.Controllers
                 return Unauthorized("User is not found");
             }
             var hashedPassword = HashPassword(logoutDTO.Password);
-            if (user.HashPassword != logoutDTO.Password || user.Token != logoutDTO.Token)
+            if (user.HashPassword != hashedPassword || user.Token != logoutDTO.Token)
             {
                 return Unauthorized("Password or token is not valid");
             }

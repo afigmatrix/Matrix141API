@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Matrix1141EF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8bf9708da6af9a3ccdf11ded38b7de7216f5eac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45d34791ceda67661016ef5906b9d6361a9f897c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Matrix1141EF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Matrix1141EF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
