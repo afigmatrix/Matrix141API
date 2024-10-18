@@ -132,3 +132,14 @@ D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\ref\Matri
 D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.csproj.AssemblyReference.cache
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.AssemblyInfoInputs.cache
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.AssemblyInfo.cs
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.csproj.CoreCompileInputs.cache
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.sourcelink.json
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.dll
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\refint\Matrix1141EF.dll
+C:\Users\ikinci.el.noutbuklar\Source\Repos\Matrix141API\user\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.pdb

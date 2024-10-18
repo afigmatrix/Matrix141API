@@ -13,5 +13,6 @@ namespace Matrix1141EF.Data.Entity
         public string HashPassword { get; set; } 
         public string Email { get; set; }
         public ICollection<Role> Roles { get; set; }
+        public string Token { get; set; }
     }
 }

@@ -30,6 +30,8 @@ namespace Matrix1141EF
         {
 
             services.AddControllers();
+            services.AddMvc().AddNewtonsoftJson(options => 
+            { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
             services.AddDbContext<AppDbContext>(op =>
             {
                 op.UseSqlServer(Configuration.GetConnectionString("Default"));
