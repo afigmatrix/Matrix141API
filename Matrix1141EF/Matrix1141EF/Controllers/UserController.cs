@@ -1,68 +1,56 @@
-﻿using Matrix1141EF.Data;
+﻿using AutoMapper;
 using Matrix1141EF.Data.Entity;
 using Matrix1141EF.Model.DTO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Matrix1141EF.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly AppDbContext context;
+        private readonly UserManager<User> userManager;
+        private readonly IMapper mapper;
 
-        public UserController(AppDbContext context)
+        public UserController(UserManager<User> userManager,IMapper mapper)
         {
-            this.context = context;
+            this.userManager = userManager;
+            this.mapper = mapper;
         }
-        [HttpPost]
-        public async Task<IActionResult> Create(UserCreateDTO userCreateDto)
-        {
-            if (string.IsNullOrEmpty(userCreateDto.Password) || userCreateDto.Password.Length < 6)
-            {
-                return BadRequest("Password is not valid!");
-            }
 
-            var userEntity = new User();
-            userEntity.Name = userCreateDto.Name;
-            userEntity.Email = userCreateDto.Email;
-            userEntity.HashPassword = HashPassword(userCreateDto.Password);
-            foreach(var roleId in userCreateDto.RoleIds) //1,2
+        [HttpPost]
+        public async Task<IActionResult> Create(UserCreateDTO createDTO)
+        {
+            var userEntity = new User()
             {
-                var roleEntity = await context.Roles.FindAsync(roleId);
-                if (roleEntity != null)
-                {
-                    userEntity.Roles.Add(roleEntity);
-                }
-            } 
-            await context.Users.AddAsync(userEntity);
-            await context.SaveChangesAsync();
-            return NoContent();
+                Name = createDTO.Name,
+                Age = 30,
+                Email = createDTO.Email,
+                UserName = createDTO.Email
+            };
+            var saveResult = await userManager.CreateAsync(userEntity, createDTO.Password);
+            if (saveResult.Succeeded)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> getAll()
         {
-            var userList = await context.Users.Include(m => m.Roles).ToListAsync();
-            return Ok(userList);
+            var allUsers = await userManager.Users.ToListAsync();
+            var result = mapper.Map<List<UserGetDTO>>(allUsers);
+            return Ok(result);
         }
 
-        private string HashPassword(string password)
-        {
-            using (SHA256 sHA256 = SHA256.Create())
-            {
-                byte[] hashedData = sHA256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in hashedData)
-                {
-                    sb.Append(b.ToString("x2"));
-                }
-                return sb.ToString();
-            }
-        }
     }
 }
