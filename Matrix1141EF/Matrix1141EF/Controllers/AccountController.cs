@@ -4,6 +4,7 @@ using Matrix1141EF.Model.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Security.Cryptography;
@@ -45,7 +46,7 @@ namespace Matrix1141EF.Controllers
                 return Ok(token);
             }
         }
-        [HttpDelete]
+        [HttpPost("logout")]
         public async Task<IActionResult> LogOut (LogOutDTO logOutDTO)
         {
             logOutDTO.Password=HashPassword(logOutDTO.Password);
@@ -56,7 +57,7 @@ namespace Matrix1141EF.Controllers
             }
             else
             {
-                _context.Users.Remove(user);
+                user.Token=null;
                 await _context.SaveChangesAsync();
                 return Ok(user);
             }
