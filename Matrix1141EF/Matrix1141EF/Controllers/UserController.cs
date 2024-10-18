@@ -60,6 +60,7 @@ namespace Matrix1141EF.Controllers
                 foreach (byte b in hashedData)
                 {
                     sb.Append(b.ToString("x2"));
+                    //x2 yeni hexadecimal formatda
                 }
                 return sb.ToString();
             }
