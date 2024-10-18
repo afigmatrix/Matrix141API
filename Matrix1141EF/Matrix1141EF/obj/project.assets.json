@@ -6245,11 +6245,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo-5558\\Desktop\\Web Api\\4_oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
       "projectName": "Matrix1141EF",
-      "projectPath": "C:\\Users\\Lenovo-5558\\Desktop\\Web Api\\4_oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+      "projectPath": "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
       "packagesPath": "C:\\Users\\Lenovo-5558\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo-5558\\Desktop\\Web Api\\4_oktyabr\\Matrix1141EF\\Matrix1141EF\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo-5558\\AppData\\Roaming\\NuGet\\NuGet.Config",

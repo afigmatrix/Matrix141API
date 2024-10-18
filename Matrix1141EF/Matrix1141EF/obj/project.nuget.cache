@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ulpT6NylQAbfvS0LH5QK5QnLC5tGRjMcAy/34HaoQET+K9BXUZ4S7badc+PgEkscwG4KZvgBA5l5/0w9z9thLw==",
+  "dgSpecHash": "Efch3V3BP1swujpEms0hcVwVM4rgwiW+Sde5E6n5h3SI7q7uaBnrFTEx/KPLwQ0aU4X2WupKFpkUWgl9snuWag==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo-5558\\Desktop\\Web Api\\4_oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo-5558\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Lenovo-5558\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
