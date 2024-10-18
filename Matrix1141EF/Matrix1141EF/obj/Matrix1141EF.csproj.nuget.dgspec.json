@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {}
+    "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\UserServicesProcess\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {
+    "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\UserServicesProcess\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\UserServicesProcess\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
         "projectName": "Matrix1141EF",
-        "projectPath": "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
-        "packagesPath": "C:\\Users\\Lenovo-5558\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo-5558\\Desktop\\matrix_task\\17 oktyabr\\Matrix1141EF\\Matrix1141EF\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\UserServicesProcess\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\UserServicesProcess\\Matrix1141EF\\Matrix1141EF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo-5558\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -93,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

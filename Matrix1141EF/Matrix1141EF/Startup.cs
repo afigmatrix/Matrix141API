@@ -1,4 +1,5 @@
 using Matrix1141EF.Data;
+using Matrix1141EF.MiddleWare;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -50,6 +51,8 @@ namespace Matrix1141EF
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Matrix1141EF v1"));
             }
+
+            app.UseMiddleware<TokenMiddleware>();
 
             app.UseHttpsRedirection();
 
