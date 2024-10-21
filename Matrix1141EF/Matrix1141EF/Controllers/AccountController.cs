@@ -19,7 +19,7 @@ namespace Matrix1141EF.Controllers
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
-        [HttpPost]
+        [HttpPost("SignIn")]
         public async Task<IActionResult> Login(LoginDto login)
         {
             var user  = await userManager.FindByEmailAsync(login.Email);
@@ -36,7 +36,7 @@ namespace Matrix1141EF.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("SignOut")]
         public async Task Logout()
         {
             await signInManager.SignOutAsync();

@@ -10,17 +10,25 @@ namespace Matrix1141EF.Controllers
     [ApiController]
     public class FacultyController : ControllerBase
     {
-        private readonly AppDbContext contex;
+        private readonly AppDbContext context;
 
-        public FacultyController(AppDbContext contex)
+        public FacultyController(AppDbContext context)
         {
-            this.contex = contex;
+            this.context = context;
         }
+
         [HttpPost]
-        public async Task Create(Faculty faculty)
+        public async Task<ActionResult> Create(Faculty faculty)
         {
-            await contex.Faculty.AddAsync(faculty);
-            await contex.SaveChangesAsync();
+            if (faculty == null)
+            {
+                return BadRequest("Faculty cannot be null");
+            }
+
+            await context.Faculty.AddAsync(faculty);
+            await context.SaveChangesAsync();
+
+            return Ok();
         }
     }
 }

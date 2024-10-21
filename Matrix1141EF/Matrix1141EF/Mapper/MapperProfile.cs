@@ -9,6 +9,7 @@ namespace Matrix1141EF.Mapper
         public MapperProfile()
         {
             CreateMap<User, UserGetDTO>().ReverseMap();
+            CreateMap<User, UserCreateDTO>().ReverseMap().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email));
         }
     }
 }

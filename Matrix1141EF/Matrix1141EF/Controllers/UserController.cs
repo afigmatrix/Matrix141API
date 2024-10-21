@@ -24,24 +24,24 @@ namespace Matrix1141EF.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(UserCreateDTO createDTO)
+        public async Task<IActionResult> Create(UserCreateDTO createDTO, string roleName)
         {
-            var userEntity = new User()
-            {
-                Name = createDTO.Name,
-                Age = 30,
-                Email = createDTO.Email,
-                UserName = createDTO.Email
-            };
+           var userEntity = mapper.Map<User>(createDTO);
             var saveResult = await userManager.CreateAsync(userEntity, createDTO.Password);
-            if (saveResult.Succeeded)
-            {
-                return NoContent();
-            }
-            else
+            if (!saveResult.Succeeded)
             {
                 return BadRequest();
             }
+            var roleExist = await userManager.IsInRoleAsync(userEntity, roleName);
+            if (!roleExist)
+            {
+                var roleResult = await userManager.AddToRoleAsync(userEntity, roleName);
+                if (!roleResult.Succeeded)
+                {
+                    return BadRequest();
+                }
+            }
+            return Ok();
         }
 
         [HttpGet]
