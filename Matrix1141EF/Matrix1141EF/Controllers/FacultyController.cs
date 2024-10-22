@@ -1,7 +1,9 @@
 ﻿using Matrix1141EF.Data;
 using Matrix1141EF.Data.Entity;
+using Matrix1141EF.Model.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace Matrix1141EF.Controllers
@@ -17,10 +19,16 @@ namespace Matrix1141EF.Controllers
             this.contex = contex;
         }
         [HttpPost]
-        public async Task Create(Faculty faculty)
+        public async Task<ActionResult> Create(FacultyCreateDTO createDTO)
         {
-            await contex.Faculty.AddAsync(faculty);
+            
+            var userEntity = new Faculty();
+            userEntity.Name = createDTO.Name;
+            
+            await contex.Faculty.AddAsync(userEntity);
             await contex.SaveChangesAsync();
+            return Ok();
+           
         }
     }
 }

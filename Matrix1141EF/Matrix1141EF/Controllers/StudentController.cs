@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Matrix1141EF.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles ="Admin")]
+   // [Authorize(Roles ="Admin")]
     [ApiController]
     public class StudentController : ControllerBase
     {
@@ -38,7 +38,7 @@ namespace Matrix1141EF.Controllers
             return NoContent();
 
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<List<Student>> ReadAllStudent()
         {

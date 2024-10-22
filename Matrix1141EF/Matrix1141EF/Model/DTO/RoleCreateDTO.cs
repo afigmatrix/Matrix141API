@@ -5,6 +5,6 @@ namespace Matrix1141EF.Model.DTO
 {
     public class RoleCreateDTO
     {
-        public string Name { get; set; }
+        public string RoleName { get; set; }
     }
 }
