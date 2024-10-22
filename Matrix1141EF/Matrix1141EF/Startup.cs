@@ -1,5 +1,9 @@
 using Matrix1141EF.Data;
 using Matrix1141EF.Data.Entity;
+using Matrix1141EF.Repository.Impl;
+using Matrix1141EF.Repository.Interface;
+using Matrix1141EF.Service.Impl;
+using Matrix1141EF.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -55,6 +59,8 @@ namespace Matrix1141EF
             });
             services.AddMvc().AddNewtonsoftJson(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });  //Fix cycle problem
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddScoped<ILibraryService, LibraryService>();
+            services.AddScoped<ILibraryRepository, LibraryRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

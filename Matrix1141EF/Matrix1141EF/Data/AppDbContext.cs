@@ -11,5 +11,6 @@ namespace Matrix1141EF.Data
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Faculty> Faculty { get; set; }
+        public DbSet<Library> Libraries{ get; set; }
     }
 }

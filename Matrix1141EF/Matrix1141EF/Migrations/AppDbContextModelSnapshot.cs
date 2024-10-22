@@ -34,6 +34,24 @@ namespace Matrix1141EF.Migrations
                     b.ToTable("Faculty");
                 });
 
+            modelBuilder.Entity("Matrix1141EF.Data.Entity.Library", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Libraries");
+                });
+
             modelBuilder.Entity("Matrix1141EF.Data.Entity.Role", b =>
                 {
                     b.Property<int>("Id")
