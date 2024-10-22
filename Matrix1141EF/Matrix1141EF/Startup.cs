@@ -1,5 +1,7 @@
 using Matrix1141EF.Data;
 using Matrix1141EF.Data.Entity;
+using Matrix1141EF.Events.Interfaces;
+using Matrix1141EF.Events;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -17,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Matrix1141EF.Controllers;
 
 namespace Matrix1141EF
 {
@@ -49,6 +52,9 @@ namespace Matrix1141EF
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<AppDbContext>();
 
+            services.AddScoped<LoginFailedEventSubscriber>();
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Matrix1141EF", Version = "v1" });
@@ -59,12 +65,17 @@ namespace Matrix1141EF
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Matrix1141EF v1"));
             }
+
+            var accountController = app.ApplicationServices.GetRequiredService<AccountController>();
+            accountController.OnLoginFailed += LoginFailedEventSubscriber.handleLoginFailed();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -77,5 +88,9 @@ namespace Matrix1141EF
                 endpoints.MapControllers();
             });
         }
+    }
+
+    internal class ApplicationUser
+    {
     }
 }
