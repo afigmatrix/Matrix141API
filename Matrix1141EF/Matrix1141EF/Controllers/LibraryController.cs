@@ -31,5 +31,7 @@ namespace Matrix1141EF.Controllers
             LibraryGetByIdDto result = await libraryService.GetLibraryById(id);
             return Ok(result);
         }
+
+        //Global Query Filter
     }
 }
