@@ -63,7 +63,7 @@ namespace Matrix1141EF.Controllers
             }
 
         }
-        public string GenerateToken()
+        private string GenerateToken()
         {
             return Guid.NewGuid().ToString(); 
         } 
