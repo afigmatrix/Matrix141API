@@ -25,37 +25,28 @@ namespace Matrix1141EF.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(UserCreateDTO userCreateDTO,string roles)
+        public async Task<IActionResult> Create(UserCreateDTO userCreateDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var userEntity = mapper.Map<User>(userCreateDTO);
-            var result = await userManager.CreateAsync(userEntity,userCreateDTO.Password);
-
-            if (!result.Succeeded)
+            var userResult = await userManager.CreateAsync(userEntity,userCreateDTO.Password);
+            if (userResult.Succeeded)
             {
-                return BadRequest();
+                return Ok();
             }
-            
-            var roleCheck = await userManager.IsInRoleAsync(userEntity, roles);
-            if (!roleCheck)
-            {
-                var roleResult = await userManager.AddToRoleAsync(userEntity, roles);
-                if (!roleResult.Succeeded)
-                {
-                    return BadRequest();
-                }
-            }
-            return Ok();
-
+            return BadRequest("Xeta bas verdi");
         }
-        
-            
+
             [HttpGet]
-        public async Task<IActionResult> getAll()
-        {
-            var allUsers = await userManager.Users.ToListAsync();
-            var result = mapper.Map<List<UserGetDTO>>(allUsers);
-            return Ok(result);
-        }
+            public async Task<IActionResult> getAll()
+            {
+                var allUsers = await userManager.Users.ToListAsync();
+                var result = mapper.Map<List<UserGetDTO>>(allUsers);
+                return Ok(result);
+            }
 
+        }
     }
-}
