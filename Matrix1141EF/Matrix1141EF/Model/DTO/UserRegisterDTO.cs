@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace Matrix1141EF.Model.DTO
+﻿namespace Matrix1141EF.Model.DTO
 {
-    public class UserCreateDTO
+    public class UserRegisterDTO
     {
         public string Name { get; set; }
         public string Password { get; set; }

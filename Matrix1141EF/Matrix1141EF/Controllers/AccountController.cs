@@ -1,5 +1,7 @@
-﻿using Matrix1141EF.Data.Entity;
+﻿using Matrix1141EF.Data;
 using Matrix1141EF.Model.DTO;
+using Matrix1141EF.Service.Impl;
+using Matrix1141EF.Service.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,35 +13,33 @@ namespace Matrix1141EF.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<User> userManager;
-        private readonly SignInManager<User> signInManager;
-
-        public AccountController(UserManager<User> userManager,SignInManager<User> signInManager)
+        public IUserService UserService { get; set; }
+        public AccountController(IUserService userService)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-        }
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginDto login)
-        {
-            var user  = await userManager.FindByEmailAsync(login.Email);
-            var signInResult = await signInManager.CheckPasswordSignInAsync(user, login.Password, false);
-
-            if (signInResult.Succeeded)
-            {
-                await signInManager.SignInAsync(user, isPersistent: false);
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
+            UserService = userService;
         }
 
-        [HttpGet]
-        public async Task Logout()
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(UserCreateDTO userCreateDTO)
         {
-            await signInManager.SignOutAsync();
+            await UserService.UserCreate(userCreateDTO);
+            return NoContent();
         }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(LoginDto loginDto)
+        {
+            var UserResult= await UserService.Login(loginDto);
+            return NoContent();
+        }
+
+        [HttpGet("Logout")]
+        public async Task<IActionResult> LogOut()
+        {
+            await UserService.LogOut();
+            return NoContent();
+        }
+
+       
     }
 }

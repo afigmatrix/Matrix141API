@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {}
+    "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\25.10.2024Task\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {}
   },
   "projects": {
-    "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {
+    "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\25.10.2024Task\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\25.10.2024Task\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
         "projectName": "Matrix1141EF",
-        "projectPath": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
-        "packagesPath": "C:\\Users\\mehdi\\.nuget\\packages\\",
-        "outputPath": "D:\\Matrix\\P141\\Matrix141API\\Matrix1141EF\\Matrix1141EF\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\25.10.2024Task\\Matrix1141EF\\Matrix1141EF\\Matrix1141EF.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Source\\Repos\\Matrix141API\\25.10.2024Task\\Matrix1141EF\\Matrix1141EF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mehdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -101,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
