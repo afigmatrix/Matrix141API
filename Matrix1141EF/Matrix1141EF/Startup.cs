@@ -4,6 +4,7 @@ using Matrix1141EF.Repository.Impl;
 using Matrix1141EF.Repository.Interface;
 using Matrix1141EF.Service.Impl;
 using Matrix1141EF.Service.Interface;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,24 @@ namespace Matrix1141EF
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddJwtBearer(options =>
+          {
+              options.Events = new JwtBearerEvents
+              {
+                  OnChallenge = context =>
+                  {
+                      context.Response.StatusCode = 401;
+                      context.HandleResponse();
+                      return Task.CompletedTask;
+                  }
+              };
+          });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+            });
 
             services.AddControllers();
             services.AddDbContext<AppDbContext>(op =>
@@ -42,7 +61,7 @@ namespace Matrix1141EF
                 op.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 
-            services.AddIdentity<User,Role>(op =>
+            services.AddIdentity<User, Role>(op =>
             {
                 op.Password.RequireNonAlphanumeric = false;
                 op.Password.RequiredLength = 6;
