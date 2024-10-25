@@ -1,68 +1,74 @@
-﻿using Matrix1141EF.Data;
+﻿using AutoMapper;
 using Matrix1141EF.Data.Entity;
 using Matrix1141EF.Model.DTO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Matrix1141EF.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly AppDbContext context;
-
-        public UserController(AppDbContext context)
+        private readonly UserManager<User> UserManager;
+        private readonly IMapper Mapper;
+        public UserController(UserManager<User> userManager,IMapper mapper)
         {
-            this.context = context;
+            userManager = userManager;
+            Mapper= mapper;
         }
-        [HttpPost]
-        public async Task<IActionResult> Create(UserCreateDTO userCreateDto)
-        {
-            if (string.IsNullOrEmpty(userCreateDto.Password) || userCreateDto.Password.Length < 6)
-            {
-                return BadRequest("Password is not valid!");
-            }
 
-            var userEntity = new User();
-            userEntity.Name = userCreateDto.Name;
-            userEntity.Email = userCreateDto.Email;
-            userEntity.HashPassword = HashPassword(userCreateDto.Password);
-            foreach(var roleId in userCreateDto.RoleIds) //1,2
+        [HttpPost]
+        public async Task<IActionResult> Register(UserCreateDTO userCreateDTO)
+        {
+            var UserEntity = new User()
             {
-                var roleEntity = await context.Roles.FindAsync(roleId);
-                if (roleEntity != null)
-                {
-                    userEntity.Roles.Add(roleEntity);
-                }
-            } 
-            await context.Users.AddAsync(userEntity);
-            await context.SaveChangesAsync();
-            return NoContent();
+                Name = userCreateDTO.Name,
+                Email = userCreateDTO.Email,
+                FinCode = "7836e4hvsd8"
+            };
+        var UserResult=await UserManager.CreateAsync(UserEntity,userCreateDTO.Password);
+
+            if(UserResult.Succeeded)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }    
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllUsers()
         {
-            var userList = await context.Users.Include(m => m.Roles).ToListAsync();
-            return Ok(userList);
+            var AllUsers = await UserManager.Users.ToListAsync();
+            var Result=Mapper.Map<UserCreateDTO>(AllUsers);
+            return Ok(Result);
         }
 
-        private string HashPassword(string password)
+        [HttpPost("assign")]
+        public async Task<IActionResult> AssignRoleToUser(string userEmail, string roleName)
         {
-            using (SHA256 sHA256 = SHA256.Create())
+            var user = await UserManager.FindByEmailAsync(userEmail);
+            if (user == null)
             {
-                byte[] hashedData = sHA256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in hashedData)
-                {
-                    sb.Append(b.ToString("x2"));
-                }
-                return sb.ToString();
+                return BadRequest("İstifadəçi tapılmadı.");
             }
+
+            var result = await UserManager.AddToRoleAsync(user, roleName);
+            if (result.Succeeded)
+            {
+                return Ok($"İstifadəçiyə '{roleName}' rolu əlavə olundu.");
+            }
+
+            return BadRequest(result.Errors);
         }
+
+
+
     }
 }

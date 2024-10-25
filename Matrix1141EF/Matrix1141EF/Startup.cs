@@ -1,8 +1,12 @@
 using Matrix1141EF.Data;
+using Matrix1141EF.Data.Entity;
 using Matrix1141EF.MiddleWare;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +18,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Matrix1141EF
 {
@@ -35,12 +41,36 @@ namespace Matrix1141EF
             {
                 op.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
+
+            services.AddIdentity<User,Role>(op => {
+                op.Password.RequireNonAlphanumeric = false;
+                op.Password.RequireUppercase = false;
+                op.Password.RequireLowercase = false;
+                op.Password.RequireDigit = false;
+                op.User.RequireUniqueEmail = true;
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.Events = new CookieAuthenticationEvents
+                {
+                    OnRedirectToLogin = context =>
+                    {
+                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        return Task.CompletedTask;
+                    }
+                };
+            });
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Matrix1141EF", Version = "v1" });
             });
             services.AddMvc().AddNewtonsoftJson(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });  //Fix cycle problem
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -52,7 +82,7 @@ namespace Matrix1141EF
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Matrix1141EF v1"));
             }
 
-            app.UseMiddleware<TokenMiddleware>();
+            //app.UseMiddleware<TokenMiddleware>();
 
             app.UseHttpsRedirection();
 

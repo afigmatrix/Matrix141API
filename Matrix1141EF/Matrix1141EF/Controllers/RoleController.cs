@@ -1,10 +1,9 @@
-﻿using Matrix1141EF.Data;
+﻿using AutoMapper;
 using Matrix1141EF.Data.Entity;
 using Matrix1141EF.Model.DTO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Matrix1141EF.Controllers
@@ -13,40 +12,29 @@ namespace Matrix1141EF.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
-        private readonly AppDbContext context;
+        public RoleManager<Role> RoleManager { get; set; }
 
-        public RoleController(AppDbContext context)
+        private IMapper mapper { get; set; }
+
+        public RoleController(RoleManager<Role> roleManager, IMapper mapper)
         {
-            this.context = context;
+            this.RoleManager = roleManager;
+            this.mapper = mapper;
         }
+
         [HttpPost]
-        public async Task<IActionResult> Create(RoleCreateDTO roleCreate)
+        public async Task<IActionResult> CreateRole(RoleCreateDTO roleCreateDTO)
         {
-            var roleEntity = new Role()
+            var RoleResult = mapper.Map<Role>(roleCreateDTO);
+            var ExistRole = await RoleManager.CreateAsync(RoleResult);
+            if (ExistRole.Succeeded)
             {
-                Name = roleCreate.Name
-            };
-            await context.Roles.AddAsync(roleEntity);
-            await context.SaveChangesAsync();
-            return NoContent();
-        }
-
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            List<Role> roleEntityList = await context.Roles.ToListAsync();
-            List<RoleGetDTO> result = new List<RoleGetDTO>();
-            foreach (var role in roleEntityList)
-            {
-                var roleGetDto = new RoleGetDTO
-                {
-                    Name = role.Name,
-                    Id = role.Id
-                };
-                result.Add(roleGetDto);
+                return Ok();
             }
-            return Ok(result);
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

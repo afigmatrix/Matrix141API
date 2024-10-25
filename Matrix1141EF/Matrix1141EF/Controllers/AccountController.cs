@@ -1,13 +1,9 @@
-﻿using Matrix1141EF.Data;
-using Matrix1141EF.Data.Entity;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Security.Cryptography;
+﻿using Matrix1141EF.Data.Entity;
 using Matrix1141EF.Model.DTO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Matrix1141EF.Controllers
 {
@@ -15,80 +11,43 @@ namespace Matrix1141EF.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly AppDbContext context;
+        public UserManager<User> UserManager { get; }
+        public SignInManager<User> SignInManager { get; }
 
-        public AccountController(AppDbContext context)
+        public AccountController(SignInManager<User> signInManager,UserManager<User> userManager)
         {
-            this.context = context;
+            this.UserManager=userManager;
+            this.SignInManager=signInManager;
         }
 
-        [HttpPost("Login")]
+        [HttpPost]
         public async Task<IActionResult> Login(LoginDTO loginDTO)
         {
-            if (!ModelState.IsValid)
+            var ExistUser=await UserManager.FindByEmailAsync(loginDTO.Email);
+            if (ExistUser==null)
             {
-                return BadRequest(ModelState);
+                return BadRequest();
             }
-
-            var ExistUser = await context.Users.Where(m => m.Email == loginDTO.Email && m.HashPassword == HashPassword(loginDTO.Password)).FirstOrDefaultAsync();
-
-            if (ExistUser == null)
+            var Result = await SignInManager.CheckPasswordSignInAsync(ExistUser, loginDTO.Password,false);
+            if(Result.Succeeded)
             {
-                return Unauthorized(new { message = "Invalid email or password!" });
+                await SignInManager.SignInAsync(ExistUser,isPersistent:true);
+                return Ok();
             }
-
-            var Token = GenerateManualToken(ExistUser);
-
-            ExistUser.Token = Token;
-
-            context.Users.Update(ExistUser);
-            await context.SaveChangesAsync();
-
-            return Ok(new { Token });
+            else
+            {
+                return BadRequest();
+            }
         }
 
-        [HttpPost("LogOut")]
-        public async Task<IActionResult> LogOut(LogOutDTO logOutDTO)
+       
+
+        [HttpGet]
+        public async Task<IActionResult> LogOut()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            //var user = HttpContext.Items["User"] as User;
-
-            var ExistUser = await context.Users.Where(m => m.Email == logOutDTO.Email && m.HashPassword == HashPassword(logOutDTO.Password) && m.Token == logOutDTO.Token).FirstOrDefaultAsync();
-
-            if (ExistUser == null)
-            {
-                return Unauthorized(new { message = "Invalid data!" });
-            }
-
-            ExistUser.Token = null;
-            context.Users.Update(ExistUser);
-            await context.SaveChangesAsync();
-            return Ok(new { message = "Successfully logged out" });
+            await SignInManager.SignOutAsync();
+            return Ok();
         }
 
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] HashedData = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in HashedData)
-                {
-                    sb.Append(b.ToString("X2"));
-                }
-                return sb.ToString();
-            }
-        }
-
-        private string GenerateManualToken(User user)
-        {
-            string Token = Guid.NewGuid().ToString();
-
-            return Token;
-        }
     }
-}
 }
