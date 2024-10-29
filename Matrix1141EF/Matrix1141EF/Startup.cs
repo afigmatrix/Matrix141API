@@ -61,6 +61,20 @@ namespace Matrix1141EF
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<ILibraryService, LibraryService>();
             services.AddScoped<ILibraryRepository, LibraryRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IUserServiceWithNewTask,UserServiceNewTask>();
+            services.AddScoped<IRoleServiceWithNewTask,RoleServiceWithNewTask>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IUserProductRepository, UserProductRepository>();
+            services.AddScoped<IUserProductService, UserProductService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
