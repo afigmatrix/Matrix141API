@@ -9,6 +9,6 @@ namespace Matrix1141EF.Data.Entity
         public int? Age { get; set; }
         public DateTime BirthDate{ get; set; }
         public int FacultyId { get; set; }
-        public Faculty Faculty { get; set; }
+        public virtual Faculty Faculty { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Matrix1141EF.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles ="Admin")]
+    // [Authorize(Roles ="Admin")]
     [ApiController]
     public class StudentController : ControllerBase
     {
@@ -42,10 +42,20 @@ namespace Matrix1141EF.Controllers
         [HttpGet]
         public async Task<List<Student>> ReadAllStudent()
         {
-            var result =await _context.Students.Include(m=>m.Faculty).ToListAsync();
-            var student = await _context.Students.Where(m => m.Id == 5).FirstOrDefaultAsync();
-            var studentWithFaculty = await _context.Students.Include(m=>m.Faculty).Where(m => m.Id == 5).FirstOrDefaultAsync();
-            return  result;
+            var result = await _context.Students.ToListAsync();
+            var stList = new List<string>()
+            {
+                "Afiq","Rafiq","Tofiq"
+            };
+
+            var data = stList.Where(m => m.Length > 4);
+
+
+
+            stList.Add("Samire");
+
+
+            return result;
         }
     }
 }

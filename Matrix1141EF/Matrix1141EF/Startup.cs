@@ -39,6 +39,7 @@ namespace Matrix1141EF
             services.AddControllers();
             services.AddDbContext<AppDbContext>(op =>
             {
+                op.UseLazyLoadingProxies();
                 op.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 

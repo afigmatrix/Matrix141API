@@ -143,3 +143,5 @@ D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\refint\Ma
 D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.pdb
 D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\Matrix1141EF.genruntimeconfig.cache
 D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\obj\Debug\net5.0\ref\Matrix1141EF.dll
+D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\bin\Debug\net5.0\Castle.Core.dll
+D:\Matrix\P141\Matrix141API\Matrix1141EF\Matrix1141EF\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
